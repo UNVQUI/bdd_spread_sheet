@@ -86,11 +86,11 @@ Instalar los plugins (según sistema de dependencias elegido) según muestran la
 
 ## Gradle
 
-![gradle_plugin_ide][./images/gradle_plugin_ide.png]
+![gradle_plugin_ide](./images/gradle_plugin_ide.png)
 
 ## Maven
 
-![maven_plugin_ide.png][./images/maven_plugin_ide.png]
+![maven_plugin_ide.png](./images/maven_plugin_ide.png)
 
 
 [1]: https://gradle.org/install/#with-a-package-manager
