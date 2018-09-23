@@ -2,6 +2,14 @@
 
 Este proyecto cuenta con el sistema de dependencias en ```gradle``` y ```maven``` para poder contar con un ambiente en el cual se pueda ejecutar el ciclo de ATDD.
 
+**IMPORTANTE**: Evite clonar el proyecto!!!
+
+# Descargar el proyecto:
+
+1. Hacer un fork de este proyecto.
+2. Clonar el repositorio cloneado.
+3. Configurar un remoto nuevo llamado ```upstream``` utilizando el comando ```git remote add upstream git@github.com:UNVQUI/bdd_spread_sheet.git```.
+
 # Como configuro el proyecto utilando IntelliJ como IDE
 
 Instalar el gestor de dependencias (gradle o maven).
