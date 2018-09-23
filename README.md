@@ -11,6 +11,8 @@ Instalar el gestor de dependencias (gradle o maven).
 
 # Verificando herramientas:
 
+Estas verificaciones deberán realizarse desde la carpeta del proyecto.
+
 ## Gradle
 
 Deberían poder ejecutar el comando ```./gradlew cucumber``` obteniendo una salida similar a la siguiente:
@@ -77,6 +79,18 @@ Results :
 
 Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
 ```
+
+# Integración con IDE (IntelliJ)
+
+Instalar los plugins (según sistema de dependencias elegido) según muestran las capturas.
+
+## Gradle
+
+![gradle_plugin_ide][./images/gradle_plugin_ide.png]
+
+## Maven
+
+![maven_plugin_ide.png][./images/maven_plugin_ide.png]
 
 
 [1]: https://gradle.org/install/#with-a-package-manager
