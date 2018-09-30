@@ -16,6 +16,12 @@ Feature: Changing Cell Content
     And I set "a2" content with formula "=id(a1)"
     Then The cell "a2" has value "1"
 
+  Scenario: Identity Formula with numbers #2
+    Given Empty spreadsheet
+    When I set "a1" content with "89"
+    And I set "a2" content with formula "=id(a1)"
+    Then The cell "a2" has value "89"
+
   Scenario: Identity Formula with labels
     Given Empty spreadsheet
     When I set "a1" content with label "labelIdentity"
