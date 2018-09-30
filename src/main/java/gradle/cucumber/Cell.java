@@ -2,20 +2,29 @@ package gradle.cucumber;
 
 public class Cell {
 
-    private final String address;
-    private final Object value;
+    private final CellAddress address;
+    private final Content value;
 
-    public Cell(String address, Integer i) {
+    public Cell(CellAddress address, Integer i) {
         this.address = address;
-        this.value = i;
+        this.value = new Anumber(i);
     }
 
-    public Cell(String address, String label) {
+    public Cell(CellAddress address, String label) {
         this.address = address;
-        this.value = label;
+        this.value = new Label(label);
+    }
+
+    public Cell(CellAddress address, Identity function) {
+        this.address = address;
+        this.value = function;
     }
 
     public Object getValue() {
-        return value;
+        return value.getCell();
+    }
+
+    public boolean isAddressedBy(CellAddress cellAddress) {
+        return this.address.equals(cellAddress);
     }
 }
