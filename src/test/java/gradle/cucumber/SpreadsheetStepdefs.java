@@ -39,4 +39,11 @@ public class SpreadsheetStepdefs {
         Object expected = label;
 
         assertThat(actual).isEqualTo(expected);
-    }}
+    }
+
+    @When("^I set \"([^\"]*)\" content with formula \"([^\"]*)\"$")
+    public void iSetContentWithFormula(String cellAddress, String formulaAsString) throws Throwable {
+        Formula f = new Formula(formulaAsString);
+        sheet.set(cellAddress, f.createUsing(sheet));
+    }
+}
