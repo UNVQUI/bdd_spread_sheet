@@ -36,15 +36,15 @@ Feature: Gradle-Cucumber integration
 
 Feature: Sell Content
 
-  Scenario: Set cell content with number # src/test/resources/gradle/cucumber/spreadsheet.feature:3
+  Scenario: Set ACell content with number # src/test/resources/gradle/cucumber/spreadsheet.feature:3
     Given Empty spreadsheet              # SpreadsheetStepdefs.iEmptySpreadSheet()
     When I set "a1" content with "1"     # SpreadsheetStepdefs.iSetContentWith(String,String)
-    Then The cell "a1" has value "1"     # SpreadsheetStepdefs.iGetContent(String,String)
+    Then The ACell "a1" has value "1"     # SpreadsheetStepdefs.iGetContent(String,String)
 
-  Scenario: Set cell content with label        # src/test/resources/gradle/cucumber/spreadsheet.feature:8
+  Scenario: Set ACell content with label        # src/test/resources/gradle/cucumber/spreadsheet.feature:8
     Given Empty spreadsheet                    # SpreadsheetStepdefs.iEmptySpreadSheet()
     When I set "a2" content with label "label" # SpreadsheetStepdefs.iSetContentWithLabel(String,String)
-    Then The cell "a2" has value label "label" # SpreadsheetStepdefs.the_cell_has_value_label(String,String)
+    Then The ACell "a2" has value label "label" # SpreadsheetStepdefs.the_cell_has_value_label(String,String)
 
 3 Scenarios (3 passed)
 7 Steps (7 passed)
@@ -67,15 +67,15 @@ Feature: Gradle-Cucumber integration
 
 Feature: Sell Content
 
-  Scenario: Set cell content with number # gradle/cucumber/spreadsheet.feature:3
+  Scenario: Set ACell content with number # gradle/cucumber/spreadsheet.feature:3
     Given Empty spreadsheet              # SpreadsheetStepdefs.iEmptySpreadSheet()
     When I set "a1" content with "1"     # SpreadsheetStepdefs.iSetContentWith(String,String)
-    Then The cell "a1" has value "1"     # SpreadsheetStepdefs.iGetContent(String,String)
+    Then The ACell "a1" has value "1"     # SpreadsheetStepdefs.iGetContent(String,String)
 
-  Scenario: Set cell content with label        # gradle/cucumber/spreadsheet.feature:8
+  Scenario: Set ACell content with label        # gradle/cucumber/spreadsheet.feature:8
     Given Empty spreadsheet                    # SpreadsheetStepdefs.iEmptySpreadSheet()
     When I set "a2" content with label "label" # SpreadsheetStepdefs.iSetContentWithLabel(String,String)
-    Then The cell "a2" has value label "label" # SpreadsheetStepdefs.the_cell_has_value_label(String,String)
+    Then The ACell "a2" has value label "label" # SpreadsheetStepdefs.the_cell_has_value_label(String,String)
 
 3 Scenarios (3 passed)
 7 Steps (7 passed)

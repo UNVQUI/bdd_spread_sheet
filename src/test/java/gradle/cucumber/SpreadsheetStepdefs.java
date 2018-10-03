@@ -4,6 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.java.en.And;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,4 +40,16 @@ public class SpreadsheetStepdefs {
         Object expected = label;
 
         assertThat(actual).isEqualTo(expected);
-    }}
+    }
+
+    @And("^I set \"([^\"]*)\" using a formula \"([^\"]*)\"$")
+    public void iSetUsingAFormula(String cellAddress, String formula) throws Throwable {
+        String reference;
+        if (  formula.equals("=id(a1)")) {
+            reference = "a1";
+        } else {
+            reference = "a9";
+        }
+        sheet.set(cellAddress, new Identity(sheet.getReference(reference)));
+    }
+}
