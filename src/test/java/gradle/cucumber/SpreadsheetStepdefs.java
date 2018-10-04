@@ -43,13 +43,10 @@ public class SpreadsheetStepdefs {
     }
 
     @And("^I set \"([^\"]*)\" using a formula \"([^\"]*)\"$")
-    public void iSetUsingAFormula(String cellAddress, String formula) throws Throwable {
-        String reference;
-        if (  formula.equals("=id(a1)")) {
-            reference = "a1";
-        } else {
-            reference = "a9";
-        }
-        sheet.set(cellAddress, new Identity(sheet.getReference(reference)));
+    public void iSetUsingAFormula(String cellAddress, String formulaStr) throws Throwable {
+        Formula f = new Formula(formulaStr);
+
+        // sheet.set(cellAddress, new Identity(sheet.getReference(reference)));
+        sheet.set(cellAddress, f.getFunction(sheet));
     }
 }
