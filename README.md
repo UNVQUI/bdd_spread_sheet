@@ -51,6 +51,10 @@ Feature: Sell Content
 0m0.201s
 ```
 
+## Lo que deberíamos ver en IntelliJ
+
+![cucumber_output.png](images/cucumber_output.png)
+
 ## Maven
 
 Deberían poder ejecutar el comando ```mvn test``` obteniendo una salida similar a la siguiente:
