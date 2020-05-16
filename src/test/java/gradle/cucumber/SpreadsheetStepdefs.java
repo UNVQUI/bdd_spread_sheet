@@ -1,5 +1,6 @@
 package gradle.cucumber;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -19,19 +20,36 @@ public class SpreadsheetStepdefs {
     }
 
     @When("^I set \"([^\"]*)\" content with \"([^\"]*)\"$")
-    public void iSetContentWith(String direccion, String valor) throws Throwable {
+    public void iSetContentWithNumber(String direccion, String numero) throws Throwable {
 
-        Direccion a1 = new Direccion(direccion);
-        Integer numeroUno = Integer.parseInt(valor);
+        Direccion dir = new Direccion(direccion);
+        Integer numeroUno = Integer.parseInt(numero);
 
-        sheet.set(a1, numeroUno);
+        sheet.set(dir, numeroUno);
+    }
+
+    @When("^I set \"([^\"]*)\" content with '([^\"]*)'$")
+    public void iSetContentWithStr(String direccion, String texto) throws Throwable {
+
+        Direccion dir = new Direccion(direccion);
+
+        sheet.set(dir, texto);
     }
 
     @Then("^The cell \"([^\"]*)\" has value \"([^\"]*)\"$")
-    public void theCellHasValue(String direccion, String valor) throws Throwable {
+    public void theCellHasValueNumber(String direccion, String valor) throws Throwable {
         Integer unNumero = (Integer)sheet.get( direccion );
 
         Integer expectec = Integer.parseInt(valor);
         assertEquals( expectec, unNumero);
     }
+
+    @Then("^The cell \"([^\"]*)\" has value '([^\"]*)'$")
+    public void theCellHasValueStr(String direccion, String valor) throws Throwable {
+        Object content = sheet.get( direccion );
+
+        Object expected = valor;
+        assertEquals( expected, content);
+    }
+
 }

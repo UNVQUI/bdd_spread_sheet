@@ -29,11 +29,16 @@ public class SpreadSheet {
 
     }
 
-    private Cell cell(Direccion direccion) {
-        return cells.stream()
-                .filter(c -> c.isAddressBy(direccion))
-                .findFirst()
-                .orElse(null);
+    public void set(Direccion direccion, String texto) {
+        Cell theOne = cell(direccion);
+
+        if (theOne == null) {
+            theOne = new Cell(direccion);
+            cells.add(theOne);
+        }
+
+        theOne.setContenido(texto);
+
     }
 
     public Object get(String dirComoStr) {
@@ -46,4 +51,10 @@ public class SpreadSheet {
         return theOne.getContenido();
     }
 
+    private Cell cell(Direccion direccion) {
+        return cells.stream()
+                .filter(c -> c.isAddressBy(direccion))
+                .findFirst()
+                .orElse(null);
+    }
 }

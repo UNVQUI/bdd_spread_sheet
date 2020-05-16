@@ -25,6 +25,11 @@ public class Cell {
         contenido = numero;
     }
 
+    public void setContenido(String texto) {
+
+        contenido = texto;
+    }
+
     public Object getContenido() {
 
         return this.contenido;
