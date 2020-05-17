@@ -1,8 +1,8 @@
 package sheet;
 
 public class Cell {
-    private final Direccion direccion;
-    private Object contenido;
+    protected final Direccion direccion;
+    protected Object contenido;
 
     public Cell(Direccion dir, Integer value) {
 
@@ -19,15 +19,8 @@ public class Cell {
         return direccion.equals(this.direccion);
     }
 
-
-    public void setContenido(Integer numero) {
-
-        contenido = numero;
-    }
-
-    public void setContenido(String texto) {
-
-        contenido = texto;
+    public void setContenido(Object obj) {
+        contenido = obj;
     }
 
     public Object getContenido() {

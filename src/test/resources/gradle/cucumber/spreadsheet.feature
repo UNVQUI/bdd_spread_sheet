@@ -16,3 +16,9 @@ Feature: Cell Content
     Given Empty spreadsheet
     When I set "aa1" content with 'hola'
     Then The cell "aa1" has value 'hola'
+
+  Scenario: Set cell content with function
+    Given Empty spreadsheet
+    When I set "bl" content with "3"
+    And I set "al" content with function id "bl"
+    Then The cell "al" has value "3"
