@@ -57,7 +57,6 @@ public class SpreadsheetStepdefs {
     @And("^I set \"([^\"]*)\" content with function id \"([^\"]*)\"$")
     public void iSetContentWithFunctionId(String direccion, String dirRef) throws Throwable {
         Direccion dir = new Direccion(direccion);
-        Direccion dirRefer = new Direccion("dirRef");
         FuncionID fun = new FuncionID(dirRef);
         sheet.set(dir, fun);
     }
