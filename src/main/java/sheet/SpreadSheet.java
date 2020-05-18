@@ -11,6 +11,13 @@ public class SpreadSheet {
         cells = new ArrayList<Cell>();
     }
 
+    public void sum(Direccion result, Direccion celda1, Direccion celda2) {
+        Cell celdaResultado = cell(result);
+        celdaResultado.setContenido((int) cell(celda1).getContenido() + (int) cell(celda2).getContenido());
+        cells.remove(celdaResultado);
+        cells.add(celdaResultado);
+    }
+
     public void set(Direccion a1, Integer numeroUno) {
         Cell newOne = new Cell(a1, numeroUno);
         cells.add(newOne);
