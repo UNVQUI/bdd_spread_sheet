@@ -16,3 +16,7 @@ Feature: Cell Content
     Given Empty spreadsheet
     When I set "aa1" content with 'hola'
     Then The cell "aa1" has value 'hola'
+
+    Given Empty spreadsheet
+    When I set "AA1" content with 'Hola UNQUI'
+    Then The cell "AA1" has value 'Hola UNQUI'
