@@ -16,3 +16,10 @@ Feature: Cell Content
     Given Empty spreadsheet
     When I set "aa1" content with 'hola'
     Then The cell "aa1" has value 'hola'
+
+  Scenario: Set cell content with id formula
+    Given Empty spreadsheet
+    When I set "b1" content with "5"
+    And I set "a1" using a formula "=id(b1)"
+    Then The cell "a1" has value "5"
+
