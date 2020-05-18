@@ -19,7 +19,7 @@ public class SpreadsheetStepdefs {
         sheet = new SpreadSheet();
     }
 
-    @Given("^Spreadsheet with values in b1 and c1$")
+    @Given("^Spreadsheet with value 1 in b1 and c1$")
     public void spreadSheetWithValuesInB1AndC1() {
         sheet = new SpreadSheet();
         sheet.set(new Direccion("a1"),0);
