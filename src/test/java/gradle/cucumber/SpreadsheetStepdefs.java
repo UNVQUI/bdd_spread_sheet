@@ -52,4 +52,17 @@ public class SpreadsheetStepdefs {
         assertEquals( expected, content);
     }
 
+    @When("^I set \"([^\"]*)\" using a formula \"=suma([^\"]*)\"$")
+    public void i_set_using_a_formula(String direccionResultado, String direccionesArgumentos) {
+        // Write code here that turns the phrase above into concrete actions
+        String[] direcciones = direccionesArgumentos.replace("(","").replace(")","").split(",");
+
+        Integer primerNumero =(Integer) sheet.get(direcciones[0]);
+        Integer segundoNumero =(Integer) sheet.get(direcciones[1]);
+
+        Integer resultado = primerNumero + segundoNumero;
+
+        sheet.set(direccionResultado,resultado);
+
+    }
 }
