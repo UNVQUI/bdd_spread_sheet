@@ -1,6 +1,5 @@
 package gradle.cucumber;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -51,5 +50,16 @@ public class SpreadsheetStepdefs {
         Object expected = valor;
         assertEquals( expected, content);
     }
+    @When("^I set \"([^\"]*)\" using a formula \"([^\"]*)\"$")
+    public void i_set_using_a_formula(String direccion, String formula) throws Throwable {
+       Direccion dir = new Direccion(direccion);
+
+       sheet.set(dir,(Integer) sheet.get(formula.substring(4,6)));
+
+       assertEquals(sheet.get(direccion),sheet.get(formula.substring(4,6)));
+
+    }
+
+
 
 }
