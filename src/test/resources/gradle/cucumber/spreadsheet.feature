@@ -11,8 +11,21 @@ Feature: Cell Content
 
     Given Empty spreadsheet
     When I set "a9" content with "9"
-    Then The cell "a9" has value "9"
 
     Given Empty spreadsheet
     When I set "aa1" content with 'hola'
     Then The cell "aa1" has value 'hola'
+
+  Scenario: Set cell content with addition of numbers
+
+    Given Empty spreadsheet
+    When I set "a9" content with "9"
+    And I set "a8" content with "0"
+    And I set "a2" using a formula "=suma(a9,a8)"
+    Then The cell "a2" has value "9"
+
+    Given Empty spreadsheet
+    When I set "a9" content with "45"
+    And I set "a8" content with "0"
+    And I set "a2" using a formula "=suma(a9,a8)"
+    Then The cell "a2" has value "45"

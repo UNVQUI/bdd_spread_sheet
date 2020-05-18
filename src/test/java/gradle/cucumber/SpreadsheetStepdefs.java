@@ -36,6 +36,16 @@ public class SpreadsheetStepdefs {
         sheet.set(dir, texto);
     }
 
+    @When("^I set \"([^\"]*)\" using a formula \"=suma ([^\"]*)\"$")
+    public void iSetUsingAFormula(String direccion, String direcciones) throws Throwable {
+        String[] dir = direcciones.replace("(", "").replace(")", "").split(",");
+
+        Integer unNumero = (Integer)sheet.get(dir[0]);
+        Integer otroNumero = (Integer)sheet.get(dir[1]);
+
+        sheet.set(new Direccion(direccion), unNumero + otroNumero);
+    }
+
     @Then("^The cell \"([^\"]*)\" has value \"([^\"]*)\"$")
     public void theCellHasValueNumber(String direccion, String valor) throws Throwable {
         Integer unNumero = (Integer)sheet.get( direccion );
