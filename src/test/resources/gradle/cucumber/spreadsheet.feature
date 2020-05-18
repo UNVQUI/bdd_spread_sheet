@@ -16,3 +16,7 @@ Feature: Cell Content
     Given Empty spreadsheet
     When I set "aa1" content with 'hola'
     Then The cell "aa1" has value 'hola'
+
+    Given Spreadsheet with values in b1 and c1
+    When I sum "b1" and "c1"
+    Then The cell "a1" has value "2"

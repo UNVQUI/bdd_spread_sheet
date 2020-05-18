@@ -19,6 +19,19 @@ public class SpreadsheetStepdefs {
         sheet = new SpreadSheet();
     }
 
+    @Given("^Spreadsheet with values in b1 and c1$")
+    public void spreadSheetWithValuesInB1AndC1() {
+        sheet = new SpreadSheet();
+        sheet.set(new Direccion("a1"),0);
+        sheet.set(new Direccion("b1"),1);
+        sheet.set(new Direccion("c1"),1);
+    }
+
+    @When("^I sum \"([^\"]*)\" and \"([^\"]*)\"$")
+    public void iSumB1AndC1(String direccion1, String direccion2) throws Throwable {
+        sheet.sum(new Direccion("a1"), new Direccion(direccion1), new Direccion(direccion2));
+    }
+
     @When("^I set \"([^\"]*)\" content with \"([^\"]*)\"$")
     public void iSetContentWithNumber(String direccion, String numero) throws Throwable {
 
