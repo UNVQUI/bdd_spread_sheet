@@ -1,5 +1,20 @@
 Feature: Cell Content
 
+  Scenario: Set cell content with function
+    Given  Empty spreadsheet
+    When I set "b1" content with "2"
+    When I set "c1" content with "3"
+    And I set "a2" using a formula suma "b1" "c1"
+    Then The cell "a2" has value "5"
+
+  Scenario: Set cell content with function
+    Given  Empty spreadsheet
+    When I set "b1" content with "2"
+    And I set "c1" content with "3"
+    And I set "a2" using a formula "=suma(b1,c1)"
+    Then The cell "a2" has value "5"
+
+
   Scenario: Set cell content with number
     Given Empty spreadsheet
     When I set "a1" content with "1"
