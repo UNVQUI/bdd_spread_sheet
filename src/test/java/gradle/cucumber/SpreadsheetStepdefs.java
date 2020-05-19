@@ -19,6 +19,17 @@ public class SpreadsheetStepdefs {
         sheet = new SpreadSheet();
     }
 
+
+    @When("^I set \"([^\"]*)\" formula with \"=([^ + ]*) \\+ ([^\"]*)\"$")
+    public void iSetContentWithNumber(String direccion, String direccion2, String direccion3) throws Throwable {
+
+        Direccion dir = new Direccion(direccion);
+
+        Integer numeroUno = sheet.suma(direccion2, direccion3 );
+
+        sheet.set(dir, numeroUno);
+    }
+
     @When("^I set \"([^\"]*)\" content with \"([^\"]*)\"$")
     public void iSetContentWithNumber(String direccion, String numero) throws Throwable {
 

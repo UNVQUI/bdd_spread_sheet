@@ -51,6 +51,10 @@ public class SpreadSheet {
         return theOne.getContenido();
     }
 
+    public Integer suma(String direccion1, String direccion2) {
+        return (int) get(direccion1) + (int) get(direccion2);
+    }
+
     private Cell cell(Direccion direccion) {
         return cells.stream()
                 .filter(c -> c.isAddressBy(direccion))
