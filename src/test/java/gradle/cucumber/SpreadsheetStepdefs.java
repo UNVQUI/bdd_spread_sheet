@@ -1,10 +1,11 @@
 package gradle.cucumber;
 
-import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import sheet.Direccion;
+import sheet.FuncionID;
 import sheet.SpreadSheet;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -52,4 +53,11 @@ public class SpreadsheetStepdefs {
         assertEquals( expected, content);
     }
 
+
+    @And("^I set \"([^\"]*)\" content with function id \"([^\"]*)\"$")
+    public void iSetContentWithFunctionId(String direccion, String dirRef) throws Throwable {
+        Direccion dir = new Direccion(direccion);
+        FuncionID fun = new FuncionID(dirRef);
+        sheet.set(dir, fun);
+    }
 }

@@ -57,4 +57,15 @@ public class SpreadSheet {
                 .findFirst()
                 .orElse(null);
     }
+
+    public void set(Direccion dir, FuncionID id) {
+        id.setSpreadsheet(this);
+        Cell theOne = cell(dir);
+        if(theOne == null){
+            theOne = new FunctionCell(dir);
+            cells.add(theOne);
+        }
+        theOne.setContenido(id);
+
+    }
 }
