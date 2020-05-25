@@ -16,3 +16,10 @@ Feature: Cell Content
     Given Empty spreadsheet
     When I set "aa1" content with 'hola'
     Then The cell "aa1" has value 'hola'
+
+    Given Empty spreadsheet
+    When I set "a1" content with "1"
+    And  I set "a9" content with "9"
+    And I set "a2" using a formula "=suma(a9,a1)"
+    Then The cell "a2" has value "10"
+
