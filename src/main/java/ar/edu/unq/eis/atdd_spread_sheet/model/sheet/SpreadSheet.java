@@ -1,19 +1,37 @@
-package sheet;
+package ar.edu.unq.eis.atdd_spread_sheet.model.sheet;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpreadSheet {
+    private final String name;
     List<Cell> cells;
 
     public SpreadSheet() {
+        cells = new ArrayList<Cell>();
+        this.name = "unknown";
+    }
+
+    public SpreadSheet(String name) {
 
         cells = new ArrayList<Cell>();
+        this.name = name;
     }
 
     public void set(Direccion a1, Integer numeroUno) {
-        Cell newOne = new Cell(a1, numeroUno);
-        cells.add(newOne);
+        Cell newOne = findOrCreate(a1, numeroUno);
+        if ( newOne == null) {
+            cells.add(new Cell(a1, numeroUno));
+        } else {
+            newOne.setContenido(numeroUno);
+        }
+    }
+
+    private Cell findOrCreate(Direccion a1, Integer defaultValue) {
+        return cells.stream()
+                .filter(c -> c.isAddressBy(a1))
+                .findFirst()
+                .orElse(null);
     }
 
     public void set(String dirComoStr, Integer numero) {
@@ -26,6 +44,19 @@ public class SpreadSheet {
         }
 
         theOne.setContenido(numero);
+
+    }
+
+    public void set(String dirComoStr, String texto) {
+        Direccion direccion = new Direccion(dirComoStr);
+        Cell theOne = cell(direccion);
+
+        if (theOne == null) {
+            theOne = new Cell(direccion);
+            cells.add(theOne);
+        }
+
+        theOne.setContenido(texto);
 
     }
 

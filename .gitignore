@@ -1,6 +1,6 @@
 build/
 out/
-.gradle/
+.ar.edu.unq.eis.atdd_spread_sheet.model.gradle/
 .idea/
 *.iml
 target/
