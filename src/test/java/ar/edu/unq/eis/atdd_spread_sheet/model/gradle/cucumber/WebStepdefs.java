@@ -2,9 +2,8 @@ package ar.edu.unq.eis.atdd_spread_sheet.model.gradle.cucumber;
 
 import ar.edu.unq.eis.atdd_spread_sheet.delivery.InMemoryRepositoryForSpreadSheet;
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.CreateSpreadSheet;
-import ar.edu.unq.eis.atdd_spread_sheet.useCases.GetCellFromSpreadSheet;
-import ar.edu.unq.eis.atdd_spread_sheet.useCases.SetCellFromSpreadSheet;
-import cucumber.api.PendingException;
+import ar.edu.unq.eis.atdd_spread_sheet.useCases.GetCellFrom;
+import ar.edu.unq.eis.atdd_spread_sheet.useCases.SetCellContent;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -39,7 +38,7 @@ public class WebStepdefs {
         //
         //
         // Utilizo la acción Set para simplificar.
-        SetCellFromSpreadSheet uc = new SetCellFromSpreadSheet(sheetRepository);
+        SetCellContent uc = new SetCellContent(sheetRepository);
 
         uc.setCellFromSheet(spreadSheetName, direccion, value);
     }
@@ -50,7 +49,7 @@ public class WebStepdefs {
         // implementa el comportamiento específico.
         //
         // Utilizo la acción Set para simplificar.
-        GetCellFromSpreadSheet uc = new GetCellFromSpreadSheet(sheetRepository);
+        GetCellFrom uc = new GetCellFrom(sheetRepository);
 
         Object currentValue = uc.getCellFromSheet(spreadSheetName, direccion);
 

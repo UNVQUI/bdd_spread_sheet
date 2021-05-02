@@ -1,7 +1,6 @@
 package ar.edu.unq.eis.atdd_spread_sheet.useCases;
 
 import ar.edu.unq.eis.atdd_spread_sheet.model.repositories.SpreadSheetRepository;
-import ar.edu.unq.eis.atdd_spread_sheet.model.sheet.SpreadSheet;
 
 public class CreateSpreadSheet {
 

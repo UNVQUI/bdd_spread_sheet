@@ -1,8 +1,7 @@
 package ar.edu.unq.eis.atdd_spread_sheet.delivery;
 
-import ar.edu.unq.eis.atdd_spread_sheet.model.sheet.SpreadSheet;
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.CreateSpreadSheet;
-import ar.edu.unq.eis.atdd_spread_sheet.useCases.GetCellFromSpreadSheet;
+import ar.edu.unq.eis.atdd_spread_sheet.useCases.GetCellFrom;
 
 public class CLI {
 
@@ -32,7 +31,7 @@ public class CLI {
     }
 
     private void getCell(String spreadSheetName, String cellDir) {
-        GetCellFromSpreadSheet uc = new GetCellFromSpreadSheet(this.rep);
+        GetCellFrom uc = new GetCellFrom(this.rep);
 
         Object content = uc.getCellFromSheet(spreadSheetName, cellDir);
 

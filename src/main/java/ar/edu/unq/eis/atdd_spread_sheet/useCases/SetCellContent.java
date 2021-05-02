@@ -1,13 +1,12 @@
 package ar.edu.unq.eis.atdd_spread_sheet.useCases;
 
 import ar.edu.unq.eis.atdd_spread_sheet.delivery.InMemoryRepositoryForSpreadSheet;
-import ar.edu.unq.eis.atdd_spread_sheet.model.sheet.Direccion;
 import ar.edu.unq.eis.atdd_spread_sheet.model.sheet.SpreadSheet;
 
-public class SetCellFromSpreadSheet {
+public class SetCellContent {
     private InMemoryRepositoryForSpreadSheet repository;
 
-    public SetCellFromSpreadSheet(InMemoryRepositoryForSpreadSheet sheetRepository) {
+    public SetCellContent(InMemoryRepositoryForSpreadSheet sheetRepository) {
 
         this.repository = sheetRepository;
     }
