@@ -1,9 +1,11 @@
 package ar.edu.unq.eis.atdd_spread_sheet.model.gradle.cucumber;
 
-import ar.edu.unq.eis.atdd_spread_sheet.delivery.InMemoryRepositoryForSpreadSheet;
+import ar.edu.unq.eis.atdd_spread_sheet.delivery.cli.CliAction;
+import ar.edu.unq.eis.atdd_spread_sheet.infrastructure.InMemoryRepositoryForSpreadSheet;
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.CreateSpreadSheet;
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.GetCellFrom;
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.SetCellContent;
+import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -23,47 +25,35 @@ public class CliStepdefs {
 
     @Given("^Empty spreadsheet from cli$")
     public void emptySpreadsheet() {
-        // Aquí va el código específico del mecanismo de despacho. Es una clase específica que
-        // implementa el comportamiento específico.
-        //
-        // Ej.: CLIXYZ
-        //
-        // Utilizo la acción Set para simplificar.
+        /***
+         * Aquí va el código específico del mecanismo de despacho.Es una clase específica que
+         * implementa el comportamiento específico. Pueden considerar el 'set' y el 'get' de los
+         * valores de las celdas.
+         */
         CreateSpreadSheet uc = new CreateSpreadSheet(sheetRepository);
         uc.create(spreadSheetName);
     }
 
-    @When("^I write command set \"([^\"]*)\" content with number \"([^\"]*)\"$")
-    public void iWriteCommandSetContentWith(String direccion, String value) throws Throwable {
+    @When("^I write command set number \"([^\"]*)\"$")
+    public void iWriteCommandSet(String cmdLine) throws Throwable {
+        CliAction action = new CliAction(
+                new GetCellFrom(this.sheetRepository),
+                new SetCellContent(this.sheetRepository));
 
-        // Aquí va el código específico del mecanismo de despacho. Es una clase específica que
-        // implementa el comportamiento específico.
-        //
-        // Ej.: CLIXYZ
-        //
-        // Utilizo la acción Set para simplificar.
-        SetCellContent uc = new SetCellContent(sheetRepository);
+        action.executeNumber(cmdLine);
 
-        uc.setCellFromSheet(spreadSheetName, direccion, Integer.parseInt(value));
     }
 
-    @Then("^The command returns \"([^\"]*)\" when cell is \"([^\"]*)\"$")
-    public void theCommandReturnWhenCellIs(String text, String direccion) throws Throwable {
-        // Aquí va el código específico del mecanismo de despacho. Es una clase específica que
-        // implementa el comportamiento específico.
-        //
-        // Ej.: CLIGetCellValue.
-        //   Este se encarga de concatenar la dirección, agrega ":" y le concatena el valor
-        //   de la celda.
-        //
-        // Utilizo la acción Set para simplificar.
-        GetCellFrom uc = new GetCellFrom(sheetRepository);
+    @Then("^I read value with command \"([^\"]*)\" and the value is \"([^\"]*)\"$")
+    public void iReadValueWithCommandAndTheValueIs(String cmdLine, String expectedValue) throws Throwable {
+        CliAction action = new CliAction(
+                new GetCellFrom(this.sheetRepository),
+                new SetCellContent(this.sheetRepository));
 
-        Integer unNumero = (Integer) uc.getCellFromSheet(spreadSheetName, direccion);
-
-        String actual = direccion.concat(": ").concat(unNumero.toString());
-        String expected = text;
+        Object actual = action.getNumber(cmdLine);
+        Integer expected = Integer.parseInt(expectedValue);
 
         assertEquals(expected, actual);
+
     }
 }

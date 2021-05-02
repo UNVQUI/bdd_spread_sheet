@@ -1,6 +1,6 @@
 package ar.edu.unq.eis.atdd_spread_sheet.model.gradle.cucumber;
 
-import ar.edu.unq.eis.atdd_spread_sheet.delivery.InMemoryRepositoryForSpreadSheet;
+import ar.edu.unq.eis.atdd_spread_sheet.infrastructure.InMemoryRepositoryForSpreadSheet;
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.CreateSpreadSheet;
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.GetCellFrom;
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.SetCellContent;
@@ -23,21 +23,22 @@ public class WebStepdefs {
 
     @Given("^Empty spreadsheet from web$")
     public void emptySpreadsheetFromWeb() {
-        // Aquí va el código específico del mecanismo de despacho. Es una clase específica que
-        // implementa el comportamiento específico.
-        //
-        // Utilizo la acción Set para simplificar.
+        /***
+         * @page emptySpreadsheetFromWeb
+         *
+         * Aquí va el código específico del mecanismo de despacho.Es una clase específica que
+         * implementa el comportamiento específico. Pueden considerar el 'set' y el 'get' de los
+         * valores de las celdas.
+         */
         CreateSpreadSheet uc = new CreateSpreadSheet(sheetRepository);
         uc.create(spreadSheetName);
     }
 
     @When("^I fill the input-text for the cell \"([^\"]*)\" with \"([^\"]*)\"$")
     public void iFillTheInputTextForTheCellWith(String direccion, String value) throws Throwable {
-        // Aquí va el código específico del mecanismo de despacho. Es una clase específica que
-        // implementa el comportamiento específico.
-        //
-        //
-        // Utilizo la acción Set para simplificar.
+        /***
+         * @ref emptySpreadsheetFromWeb
+         */
         SetCellContent uc = new SetCellContent(sheetRepository);
 
         uc.setCellFromSheet(spreadSheetName, direccion, value);
@@ -45,10 +46,9 @@ public class WebStepdefs {
 
     @Then("^The div for the cell \"([^\"]*)\" has value \"([^\"]*)\"$")
     public void theDivForTheCellHasValue(String direccion, String expectedValue) throws Throwable {
-        // Aquí va el código específico del mecanismo de despacho. Es una clase específica que
-        // implementa el comportamiento específico.
-        //
-        // Utilizo la acción Set para simplificar.
+        /***
+         * @ref emptySpreadsheetFromWeb
+         */
         GetCellFrom uc = new GetCellFrom(sheetRepository);
 
         Object currentValue = uc.getCellFromSheet(spreadSheetName, direccion);
@@ -57,6 +57,5 @@ public class WebStepdefs {
         String expected = "<p>".concat(expectedValue).concat("</p>");
 
         assertEquals(expected, actual);
-
     }
 }

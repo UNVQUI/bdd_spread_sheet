@@ -1,6 +1,6 @@
 package ar.edu.unq.eis.atdd_spread_sheet.useCases;
 
-import ar.edu.unq.eis.atdd_spread_sheet.delivery.InMemoryRepositoryForSpreadSheet;
+import ar.edu.unq.eis.atdd_spread_sheet.infrastructure.InMemoryRepositoryForSpreadSheet;
 import ar.edu.unq.eis.atdd_spread_sheet.model.sheet.SpreadSheet;
 
 public class SetCellContent {
