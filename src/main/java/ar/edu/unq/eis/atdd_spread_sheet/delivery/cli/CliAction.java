@@ -20,7 +20,7 @@ public class CliAction {
      *
      * @param cmdLine "cli setnumber a1 1 from unknown"
      */
-    public void executeNumber(String cmdLine) {
+    public void setNumber(String cmdLine) {
         String[] elements = cmdLine.split("\\s+");
 
         String action = elements[1];

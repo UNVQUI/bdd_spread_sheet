@@ -5,7 +5,6 @@ import ar.edu.unq.eis.atdd_spread_sheet.infrastructure.InMemoryRepositoryForSpre
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.CreateSpreadSheet;
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.GetCellFrom;
 import ar.edu.unq.eis.atdd_spread_sheet.useCases.SetCellContent;
-import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -40,8 +39,7 @@ public class CliStepdefs {
                 new GetCellFrom(this.sheetRepository),
                 new SetCellContent(this.sheetRepository));
 
-        action.executeNumber(cmdLine);
-
+        action.setNumber(cmdLine);
     }
 
     @Then("^I read value with command \"([^\"]*)\" and the value is \"([^\"]*)\"$")
